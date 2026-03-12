@@ -20,17 +20,18 @@ import { ChevronRight } from "lucide-react"
  */
 export function AppHeader() {
   return (
-    <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-background px-4">
-      <SidebarTrigger className="-ml-1" />
+    <header className="shrink-0 border-b border-border bg-background">
+      <div className="mx-auto flex h-14 w-full max-w-[976px] items-center gap-4 px-4">
+        <SidebarTrigger className="-ml-1" />
       {/* DESIGNER: Replace with your logo asset or SVG; Wise uses green "WISE" wordmark */}
-      <div className="flex items-center gap-2">
-        <span className="text-xl font-bold text-primary">WISE</span>
-      </div>
-      <div className="flex flex-1" />
-      <div className="flex items-center gap-2">
-        <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-          Earn €90
-        </Button>
+        <div className="flex items-center gap-2">
+          <span className="text-xl font-bold text-primary">WISE</span>
+        </div>
+        <div className="flex flex-1" />
+        <div className="flex items-center gap-2">
+          <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            Earn €90
+          </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
@@ -59,6 +60,7 @@ export function AppHeader() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        </div>
       </div>
     </header>
   )
