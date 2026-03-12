@@ -40,11 +40,13 @@ const RECENT_TRANSACTIONS = [
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col gap-8 p-6">
+    <div className="mx-auto flex w-full max-w-[976px] flex-1 flex-col gap-8 p-6">
       {/* Total balance + actions */}
       <section className="space-y-4">
-        <h2 className="text-sm font-medium text-muted-foreground">Total balance</h2>
-        <p className="text-3xl font-bold tracking-tight">2.00 EUR</p>
+        <div className="space-y-0">
+        <p className="text-sm font-medium text-muted-foreground">Total balance</p>
+        <h2 className="text-3xl font-bold tracking-tight">2.00 EUR</h2>
+        </div>
         <div className="flex flex-wrap gap-2">
           <Button size="sm" variant='default'>
             Send money
@@ -52,26 +54,18 @@ export default function Home() {
           <Button size='sm' variant='secondary'>
             Add money
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button size='sm' variant='secondary'>
-                Request
-                <ChevronDown className="size-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
-              <DropdownMenuItem>Request from bank account</DropdownMenuItem>
-              <DropdownMenuItem>Request from card</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+         <Button size='sm' variant='secondary'>
+            Request money
+          </Button>
+
         </div>
       </section>
 
       {/* Currency account cards */}
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="flex gap-3 overflow-x-auto pb-2">
         {CURRENCY_ACCOUNTS.map((account) => (
-          <Card key={account.code} className="bg-muted/50">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <Card key={account.code} className="h-[206px] shrink-0 w-[256px] bg-muted/50">
+            <CardHeader className="flex flex-row items-center justify-start space-y-0 pb-2">
               <span className="text-lg" aria-hidden>{account.flag}</span>
               <CardTitle className="text-base font-medium">{account.label}</CardTitle>
             </CardHeader>
@@ -89,12 +83,12 @@ export default function Home() {
           <h2 className="text-lg font-semibold">Transactions</h2>
           <Link
             href="/"
-            className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+            className="text-sm font-medium text-link underline hover:underline"
           >
             See all
           </Link>
         </div>
-        <ul className="divide-y divide-border rounded-lg border bg-card">
+        <ul className="divide-y divide-border rounded-lg border">
           {RECENT_TRANSACTIONS.map((tx) => (
             <li key={tx.id} className="flex items-center gap-4 px-4 py-3">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-muted">
